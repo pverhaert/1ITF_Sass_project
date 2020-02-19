@@ -1,0 +1,19 @@
+* {
+  margin: $voorkeursafstand/2;
+  padding: $voorkeursafstand/2;
+}
+
+body {
+  background-color: $achtergrondkleur;
+  color: $tekstkleur;
+  font-family: $lettertype;
+}
+
+h1, h2, h3 {
+  font-family: $alternatief;
+  margin-top: $voorkeursafstand*2;
+  background-color: $achtergrondkleur;
+  color: $accentkleur;
+}
+
+

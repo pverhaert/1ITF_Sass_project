@@ -1,0 +1,5 @@
+@each $class, $kleur in $kleuren {
+  .text-#{$class} {
+    color: $kleur;
+  }
+}

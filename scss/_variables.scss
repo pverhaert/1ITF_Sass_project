@@ -1,0 +1,18 @@
+// google font
+@import url('https://fonts.googleapis.com/css?family=Passion+One');
+
+// variabelen
+
+$lettertype: Verdana, Geneva, sans-serif;
+$alternatief: 'Passion One', cursive;
+$achtergrondkleur: #eee;
+$tekstkleur: #111;
+$accentkleur: #f04c25;
+$voorkeursafstand: 10px;
+
+// kleuren-map
+$kleuren: (
+        "danger": #dc3545,
+        "success": #28a745,
+        "info": #17a2b8
+)

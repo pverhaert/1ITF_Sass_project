@@ -1,0 +1,16 @@
+table {
+  border-collapse: collapse;
+  border: $voorkeursafstand/5 solid $accentkleur;
+
+  th {
+    background-color: $accentkleur;
+    color: $achtergrondkleur;
+    padding: $voorkeursafstand*2;
+    border: 1px solid $tekstkleur;}
+
+  td {
+    text-align: center;
+    padding: $voorkeursafstand;
+    border: 1px solid $tekstkleur;}
+}
+
