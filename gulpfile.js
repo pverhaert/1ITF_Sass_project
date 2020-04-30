@@ -1,14 +1,13 @@
-// npm i --save-dev browser-sync @lipemat/css-mqpacker gulp gulp-autoprefixer gulp-notify gulp-plumber gulp-postcss gulp-dart-sass gulp-sourcemaps
-
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var plumber = require('gulp-plumber');
-var sass = require('gulp-dart-sass');
-var prefix = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var postcss = require('gulp-postcss');
-var mqpacker = require('@lipemat/css-mqpacker');
-var notify = require('gulp-notify');
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const plumber = require('gulp-plumber');
+const sass = require('gulp-dart-sass');
+const prefix = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const mqpacker = require('@lipemat/css-mqpacker');
+const notify = require('gulp-notify');
+const ngrok = require('ngrok');
 
 gulp.task('browser-sync', function () {
     browserSync.init({
@@ -17,6 +16,15 @@ gulp.task('browser-sync', function () {
             baseDir: "./dist",
             directory: true
         }
+    }, async function (err, bs) {
+        const tunnel = await ngrok.connect({
+            port: bs.options.get('port'),
+            region: 'eu'
+        });
+        console.log(' ------------------------------------------------');
+        console.log(`  ngrok control panel: http://localhost:4040`);
+        console.log(`public URL running at: ${tunnel}`);
+        console.log(' ------------------------------------------------');
     });
     gulp.watch('./scss/**/*.scss', gulp.series('sass'));
     gulp.watch('./**/*.{html,css,js,php}').on('change', browserSync.reload);
@@ -24,7 +32,7 @@ gulp.task('browser-sync', function () {
 
 // Compile sass into CSS (/dist/css/) & auto-inject into browser
 gulp.task('sass', function () {
-    var processors = [
+    const processors = [
         mqpacker({sort: true})
     ];
     return gulp.src('./scss/**/*.scss')
